@@ -170,7 +170,7 @@
 
   const selectedType = ref(searchParamsObject?.sort ?? 'title:desc')
   const loading = ref(true)
-  const country = ref(searchParamsObject?.country ?? countries[0].code)
+  const country = ref(searchParamsObject?.country ?? countries.find(c => c.name === 'Italy').code)
   const search = ref('')
   const items = ref([])
   const city = ref(searchParamsObject?.city ?? 'Milano')
