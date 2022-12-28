@@ -1,5 +1,6 @@
 <script setup>
   const props = defineProps({
+    countryLink: String,
     id: Number,
     title: String,
     description: String,
@@ -14,7 +15,7 @@
 </script>
 
 <template>
-  <div>
+  <a :href="countryLink ? `${countryLink}${store.id}/${id}` : null" target="_blank">
     <span class="bg-gray-800 hover:bg-gray-900
                  p-4 h-48
                  flex justify-start items-start
@@ -34,5 +35,5 @@
       <span v-if="price !== articlesPrice" class="line-through mr-2">{{ articlesPrice }} {{ currency }}</span>
       <span class="text-white">@{{ store.shortName }}</span>
     </div>
-  </div>
+  </a>
 </template>
