@@ -262,7 +262,7 @@
                     {{ itemsList.length }}
                   </span>
                   items available
-                  <span v-if="search !== ''">in {{ storeSelected.city }}</span>
+                  <span v-if="search === ''">in {{ storeSelected.city }}</span>
                 </h2>
                 <div v-if="storeSelected && storeSelected.stores.length > 1" class="flex md:ml-4 py-4">
                   <div v-for="s in storeSelected.stores" :key="s" class="flex justify-center items-center">
