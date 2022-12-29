@@ -17,7 +17,7 @@
 <template>
   <a :href="countryLink ? `${countryLink}${store.id}/${id}` : null" target="_blank" class="mb-8 md:mb-0">
     <span class="bg-gray-800 hover:bg-gray-900
-                 p-4 h-48
+                 p-4 aspect-square
                  flex justify-start items-start
                  rounded-lg border border-gray-700
                  bg-cover bg-center"
