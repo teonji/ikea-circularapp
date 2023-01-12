@@ -220,7 +220,21 @@
     }
   }
 
-  onMounted(reloadData)
+  const goToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  onMounted(() => {
+    reloadData()
+    let toTopButton = document.getElementById('to-top-button')
+    window.onscroll = function () {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        toTopButton.classList.remove("hidden");
+      } else {
+        toTopButton.classList.add("hidden");
+      }
+    }
+  })
 </script>
 
 <template>
@@ -244,7 +258,7 @@
             </div>
           </div>
           <div v-if="!loading" class="md:px-6 mx-4 mb-8">
-            <div class="md:flex items-center mb-4 md:mb-8">
+            <div class="md:flex items-center mb-4 md:mb-8 bg-gray-900 -mx-4 px-4 py-4 sticky top-0 z-50">
               <div class="relative w-full">
                 <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                   <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
@@ -316,6 +330,7 @@
       <span>Github</span>
     </a>
   </div>
+  <button id="to-top-button" @click="goToTop" title="Go To Top" class="hidden fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-[#0058AB] text-[#FBD914] text-3xl font-bold">&uarr;</button>
 </template>
 
 <style>
