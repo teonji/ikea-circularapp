@@ -258,50 +258,52 @@
             </div>
           </div>
           <div v-if="!loading" class="md:px-6 mx-4 mb-8">
-            <div class="md:flex items-center mb-4 md:mb-8 bg-gray-900 -mx-4 px-4 py-4 sticky top-0 z-50">
-              <div class="relative w-full">
-                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+            <div class="bg-gray-900 -mx-4 px-4 pt-4 sticky top-0 z-50">
+              <div class="md:flex items-center mb-4 md:mb-8">
+                <div class="relative w-full">
+                  <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <input type="text" v-model="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search">
+                  <button v-if="search" @click="search = ''" type="button" class="flex absolute inset-y-0 right-0 items-center pr-3">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </button>
                 </div>
-                <input type="text" v-model="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search">
-                <button v-if="search" @click="search = ''" type="button" class="flex absolute inset-y-0 right-0 items-center pr-3">
-                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                </button>
               </div>
-            </div>
-            <div class="md:flex justify-between items-center mb-8">
-              <div class="md:flex justify-between items-center">
-                <h2 v-if="storeSelected" class="text-gray-500 text-lg">
-                  <span :class="[itemsList.length ? 'text-green-400' : 'text-red-400']">
-                    {{ itemsList.length }}
-                  </span>
-                  items available
-                  <span v-if="search === ''">in {{ storeSelected.city }}</span>
-                </h2>
-                <div v-if="storeSelected && storeSelected.stores.length > 1" class="flex md:ml-4 py-4">
-                  <div v-for="s in storeSelected.stores" :key="s" class="flex justify-center items-center">
-                    <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                      <input type="checkbox" :id="s.id" :value="s.id" v-model="storeIds" :name="s.shortName" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" @change="reloadData">
-                      <label :for="s.shortName" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer" />
+              <div class="md:flex justify-between items-center pb-6">
+                <div class="md:flex justify-between items-center">
+                  <h2 v-if="storeSelected" class="text-gray-500 text-lg">
+                    <span :class="[itemsList.length ? 'text-green-400' : 'text-red-400']">
+                      {{ itemsList.length }}
+                    </span>
+                    items available
+                    <span v-if="search === ''">in {{ storeSelected.city }}</span>
+                  </h2>
+                  <div v-if="storeSelected && storeSelected.stores.length > 1" class="flex md:ml-4 py-4">
+                    <div v-for="s in storeSelected.stores" :key="s" class="flex justify-center items-center">
+                      <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" :id="s.id" :value="s.id" v-model="storeIds" :name="s.shortName" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" @change="reloadData">
+                        <label :for="s.shortName" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer" />
+                      </div>
+                      <label for="toggle" class="text-xs text-gray-500 mr-4">{{ s.shortName }}</label>
                     </div>
-                    <label for="toggle" class="text-xs text-gray-500 mr-4">{{ s.shortName }}</label>
                   </div>
                 </div>
-              </div>
-              <div class="flex">
-                <select v-model="country" @change="changeCountry" class="w-1/2 mr-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                  <option v-for="c in countries" :key="c" :value="c.code">
-                    {{ c.name }}
-                  </option>
-                </select>
-                <select v-model="city" @change="changeCity" class="w-1/2 mr-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                  <option v-for="s in stores" :key="s" :value="s.city">
-                    {{ s.city.charAt(0).toUpperCase() + s.city.slice(1) }}
-                  </option>
-                </select>
-                <select v-model="selectedType" @change="updateUrl" class="w-1/2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                  <option v-for="t in types" :key="t" :value="t.value">{{ t.label }}</option>
-                </select>
+                <div class="flex">
+                  <select v-model="country" @change="changeCountry" class="w-1/2 mr-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option v-for="c in countries" :key="c" :value="c.code">
+                      {{ c.name }}
+                    </option>
+                  </select>
+                  <select v-model="city" @change="changeCity" class="w-1/2 mr-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option v-for="s in stores" :key="s" :value="s.city">
+                      {{ s.city.charAt(0).toUpperCase() + s.city.slice(1) }}
+                    </option>
+                  </select>
+                  <select v-model="selectedType" @change="updateUrl" class="w-1/2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option v-for="t in types" :key="t" :value="t.value">{{ t.label }}</option>
+                  </select>
+                </div>
               </div>
             </div>
             <div class="grid md:grid-cols-5 md:gap-4 grid-cols-1 gap-2">
