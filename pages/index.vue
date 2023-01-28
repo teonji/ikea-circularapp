@@ -306,7 +306,7 @@
                 </div>
               </div>
             </div>
-            <div class="grid md:grid-cols-5 md:gap-4 grid-cols-1 gap-2">
+            <div class="grid md:grid-cols-5 md:gap-4 grid-cols-2 gap-2">
               <item v-for="i in itemsList" :key="i.id" v-bind="i" :country-link="countryData.storeLink" />
             </div>
             <div v-if="itemsList.length === 0" class="w-full text-center mx-auto">
