@@ -15,7 +15,7 @@
 </script>
 
 <template>
-  <a :href="countryLink ? `${countryLink}${store.id}/${id}` : null" target="_blank" class="mb-8 md:mb-0">
+  <a :href="countryLink ? `${countryLink}/${id}` : null" target="_blank" class="mb-8 md:mb-0">
     <span class="bg-gray-800 hover:bg-gray-900
                  p-4 aspect-square
                  flex justify-start items-start
